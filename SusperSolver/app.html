@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link rel="apple-touch-icon" href="img/AppleIcon.png"/>
+		<link rel="shortcut icon" href="img/favicon.ico" />
+		<title>SuperSolver</title>
+
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="cordova_plugins.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/supersolver.js"></script>
+		<script type="text/javascript" src="js/googcat.js"></script>
+		<script type="text/javascript" src="js/scanner.js"></script>
+		<script type="text/javascript">
+			app.initialize();
+		</script>
+		<script type="text/javascript" src="js/Core/Core.All.js"></script>
+		<script type="text/javascript" src="js/App.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			
+			document.getElementById("MenuName").innerHTML=localStorage.CustomerName;
+						  
+			if (localStorage.CustomerID > 0){
+				document.getElementById("menuNotLoggedIn").style.display = "none";
+				document.getElementById("menuLoggedIn").style.display = "block";
+
+						  
+				document.getElementById("joinNotLoggedIn").style.display = "none";
+				document.getElementById("joinLoggedIn").style.display = "inline-block";
+
+				document.getElementById("EmailOpt").style.display = "none";
+				document.getElementById("txtEmailAddress").value = localStorage.CustomerEmail;
+				
+			}
+			else
+			{
+				document.getElementById("menuNotLoggedIn").style.display = "block";
+				document.getElementById("menuLoggedIn").style.display = "none";
+
+				document.getElementById("joinNotLoggedIn").style.display = "inline-block";
+				document.getElementById("joinLoggedIn").style.display = "none";
+
+						  
+				document.getElementById("EmailOpt").style.display = "inline-block";
+				document.getElementById("txtEmailAddress").value = "";
+			}
+						  
+			$('#PostFB').on('click', function() {
+				window.open("https://www.facebook.com/dialog/feed?app_id=127577524071427&link=http%3A%2F%2Fwww.SuperSolver.com&name=SuperSolver.com&caption=Tell%20us%20what%20you%20think...&description=I%20just%20used%20SuperSolver.com%20to%20help%20solve%20my%20issues.%20Try%20it.&redirect_uri=http%3A%2F%2Fmobile.SuperSolver.com", "_system");
+			});
+						  
+			$('#Tweet').on('click', function() {
+				window.open("https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.SuperSolver.com&text=SuperSolver.com%20helps%20when%20I%20have%20a%20problem%20with%20a%20business.%20Try%20it.", "_system");
+			});
+					
+						  
+			document.addEventListener("deviceready", DeviceReady, false);
+			
+			function DeviceReady()
+			{
+				//console.log("Entering app.html DeviceReady");
+
+				$('#ScanButton').on('click', function(){SSscan()}); 
+
+				//var results = {};
+				//results.text ="mobile.supersolver.com/?locationid=100154";
+				//SSscanTest(results);  
+
+				var locationid = localStorage.locationid;
+				
+				localStorage.locationid = 0;
+
+				if (locationid > 0){
+				  SuperSolver.Search.Init(locationid); //parameter is locationID
+				} else {
+				  navigator.geolocation.getCurrentPosition(Startup, null)
+				}
+			}
+		});
+	   
+		function Startup() {
+			SuperSolver.Search.Init(0);
+		}
+		
+		</script>
+		
+	<!--     <link href="css/App.css" rel="stylesheet" type="text/css" />
+		<link href="css/Search.css" rel="stylesheet" type="text/css" /> -->
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true&key=AIzaSyBS67gV2J-kCLdKSG2ZVj8A6UigHzlBKuk"></script>
+		<script type="text/javascript" src="js/Core/oms.min.js"></script>
+		<script type="text/javascript" src="js/Search.js"></script>
+		<script type="text/javascript" src="js/BeaconManager.js"></script>
+
+		
+        <!-- Kendo UI Mobile CSS -->
+        <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+
+        <!-- jQuery JavaScript -->
+        <script src="kendo/js/jquery.min.js"></script>
+        <!-- Kendo UI Mobile combined JavaScript -->
+        <script src="kendo/js/kendo.mobile.min.js"></script>
+
+
+	</head>
+
+	<body>
+    <script>
+    // Initialize a new Kendo Mobile Application
+        var app = new kendo.mobile.Application($(document.body), { skin: 'flat' });
+        new kendo.mobile.Application($(document.body), { platform: "ios7"});
+    </script>
+		<div id="Drawer1" data-role="drawer" data-layout="main-layout">
+			<div class="MenuView" id="MenuView">
+				<div class="MenuViewInner">
+					<div>
+						<div class="UserInfo">
+						<a href="javascript:;" class="MenuToggle">
+						<img alt="" src="img/Icons/LeftRound.png" /></a> <span id="MenuName"></span></div>
+						<ul class="MenuNav">
+						<li><a href="app.html">Start</a></li>
+						<li><a href="messages.html">Messages</a></li>
+						<li><a href="profile.html">Profile</a></li>
+						<li><a href="invitebusiness.html">Invite a Biz</a></li>
+						</ul>
+					</div>
+					<div>
+						<ul class="MenuNav" id="menuNotLoggedIn" style="display:none">
+						<li><a href="login.html">Login</a></li>
+						<li><a href="register.html">Register</a></li>
+						</ul>
+						<ul class="MenuNav" id="menuLoggedIn" style="display:none">
+						<li><a href="logout.html">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+    	</div> 		
+       <!--Main layout of the pages including header and footer-->
+        <div data-role="layout" data-id="main-layout">
+          <div data-role="header">
+            <div data-role="navbar">
+              <span data-role="view-title"></span>
+            </div>
+          </div>
+            
+          <div data-role="footer">
+            <div data-role="tabstrip">
+              <a data-icon="action" href="#app">Login</a>
+              <a data-icon="share" href="#login">Invite Biz</a>
+            </div>
+          </div>
+        </div>
+        
+          
+        
+        
+        
+        <div class="Container" data-role="view" data-layout="main-layout" id="app" data-title="SuperSolver">	
+			<div data-role="page" id="pageone" data-theme="a">   						
+				<div class="Content" data-role="main">
+					<div class="MainView">
+						<div class="Page" data-page="Start">
+							<div class="Start">
+								<div class="Logo"><img src="img/Logo.png" alt="" /></div>
+								 <p class="Info">
+									You are seconds away from being heard. Tap "Get Started" to search for nearby businesses or tap "QR Scan" if you see a SuperSolver QR code.
+								</p>
+								<div class="SearchForm">
+									<div class="FormRow">
+										<div class="FormElement LocationPH">
+											<a href="javascript:;" class="LocationIcon"></a>
+											<input type="text" placeholder="Location" class="LocationInput BlueTxt" value="Current Location" id="txtLocationMain" data-bind="value: Location, valueUpdate: 'afterkeydown'" />
+										</div>
+									</div>
+									<div class="FormRow">
+										<div class="FormElement BusinessPH">
+											<input type="text" placeholder="Enter Business Name" data-bind="value: BusinessName, valueUpdate: 'afterkeydown'" />
+										</div>
+									</div>
+									<div style="text-align: center"><h3>
+										<span>
+										   <button type="button" class="GreenBtn Search">Get Started</button>
+										</span></h3>
+									</div>
+								   <div class="FormRow" style="text-align: center">
+										<span>
+											<button type="button" class="BlueBtn Scan" id="ScanButton">QR Scan</button>
+										</span>
+									</div>
+								</div>
+								<div class="LocationError Hide">
+									<strong>Location support is not available. Please enable Location Services.</strong>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div>
+					<ul class="MenuNav">
+					<li><a href="legal.html">Legal</a></li>
+					</ul>
+				</div>
+			</div>
+
+			
+			<!-- Google search page -->
+			
+			<div class="Page NoFooter" data-page="Result" style="display: none;">
+				<div class="Normal">
+					<div class="TopSearchPH">
+						<img src="img/Blank.gif" alt="" />
+						<span data-bind="text: Location"></span>
+					</div>
+					<div class="LeftBarRegion">
+						<button type="button" class="BarBtn MenuToggle"><span>&nbsp;</span></button>
+					</div>
+					<div class="RightBarRegion">                
+						<button type="button" class="BarBtn TextBtn Hide SwitchBtn"><span>List</span></button>
+						<button type="button" class="BarBtn TextBtn SwitchBtn"><span>Map</span></button>
+					</div>
+				</div>
+				<div class="SearchExt">
+					<div class="SearchForm FormInline">
+						<div class="FormRow">
+							<label class="label">Find: </label>
+							<div class="FormElement BusinessPH">
+								<input type="text" placeholder="Enter Business Name" data-bind="value: BusinessName, valueUpdate: 'afterkeydown'" />
+							</div>
+						</div>
+						<div class="FormRow">
+							<label class="label">Near: </label>
+							<div class="FormElement LocationPH">
+								<input type="text" placeholder="Location" class="LocationInput BlueTxt" value="Current Location" id="txtLocationTop" 
+									data-bind="value: Location, valueUpdate: 'afterkeydown'" />
+							</div>
+						</div>
+						<button type="button" class="BarBtn SearchSm"><span>&nbsp;</span></button>
+					</div>
+				</div>
+				<div class="Content">
+					<div class="ListView">
+						<div id="Beacons_List" data-bind="foreach: BeaconResults">
+							<div class="ResultRow">
+								<div class="Title" data-bind="text: displayname">
+								</div>
+								<img class="Icon" alt="" src="img/Blank.gif" data-bind="attr: { src: photo }" />
+								<div class="Category" data-bind="text: first_cat">
+								</div>
+								<div class="Address">
+									<table>
+										<tr>
+											<td class="vicinity" data-bind="text: vicinity"></td>
+											<td class="miles"><span data-bind="text: distance"></span></td>
+										</tr>
+									</table>
+								</div>
+								<input type="hidden" class="Idx" data-bind="value: LocationID" />
+							</div>
+					   </div> 
+						 <div id="Results_List" data-bind="foreach: Results">
+							<div class="ResultRow">
+								<div class="Title" data-bind="text: displayname">
+								</div>
+								<img class="Icon" alt="" src="img/Blank.gif" data-bind="attr: { src: photo }" />
+								<div class="Category" data-bind="text: first_cat">
+								</div>
+								<div class="Address">
+									<table>
+										<tr>
+											<td class="vicinity" data-bind="text: vicinity"></td>
+											<td class="miles"><span data-bind="text: miles"></span></td>
+										</tr>
+									</table>
+								</div>
+								<input type="hidden" class="Idx" data-bind="value: $index" />
+							</div>
+						</div>
+						<div class="ShowMore">
+							<button class="GreenBtn LoadMore" data-bind="visible: HasMore">Display 10 more</button>
+						</div>
+					</div>
+					<div class="MapView">
+						<div id="Google_Map">
+						</div>
+						<div id="RedoSearch" style="display: none;">
+							<button type="button" class="GreenBtn HomeMap">Home</button>
+							<button type="button" class="GreenBtn SearchMap">Redo Search in Map</button>
+						</div>
+					</div>
+				</div>
+			</div>		
+
+			<!--Profile pages start here-->
+			<div class="Page" data-page="SelectComplaint" style="display: none;">
+				<div class="Header">
+					<h1>SuperSolver</h1>
+					<div class="LeftBarRegion">
+						<button type="button" class="BarBtn MenuToggle"><span>&nbsp;</span></button>
+						<button type="button" class="BarBtn PrevBtn" data-bind="css: { NoAct: HideBackInComplaint() }"><span>&nbsp;</span></button>
+					</div>
+					<div class="RightBarRegion">
+						<button type="button" class="BarBtn NextBtn"><span>&nbsp;</span></button>
+					</div>
+				</div>
+				
+				<div class="Content">
+					<div data-bind="with: SelectedPlace, visible: IsSelected()">
+						<div class="SelectedPlace">
+							<div class="Title" data-bind="text: displayname2">
+							</div>
+							<img class="Icon" alt="" src="img/Blank.gif" data-bind="attr: { src: photo }" />
+							<div class="Category" data-bind="text: first_cat"></div>
+							<div class="Address">
+								<div class="vicinity" data-bind="text: formatted_address"></div>
+								<div class="miles"><span data-bind="text: miles"></span></div>
+							</div>
+						</div>
+						<div class="ComplaintTypes" data-bind="foreach: complaint_types">
+							<div class="ComplaintType">
+								<h4><span data-bind="text: name"></span></h4>
+								<div class="SubComplaintTypes" data-bind="foreach: sub_complaint_types">
+									<div class="ComplaintText" data-bind="text: name, css: { CSel: selected() }, click: onSelected"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="BottomAction">
+						<a class="PrevBtn" href="javascript:;" data-bind="css: { NoAct: HideBackInComplaint() }">Back</a> | Step 1 of 2 | <a class="NextBtn"
+							href="javascript:;">Next</a>
+					</div>
+				</div>			
+			</div>
+			
+			
+			
+			<div class="Page" data-page="ConfirmComplaint" style="display: none;">
+				<div class="Header">
+					<h1>SuperSolver</h1>
+					<div class="LeftBarRegion">
+						<button type="button" class="BarBtn MenuToggle"><span>&nbsp;</span></button>
+						<button type="button" class="BarBtn PrevBtn"><span>&nbsp;</span></button>
+					</div>
+					<div class="RightBarRegion">
+						<button type="button" class="BarBtn NextBtn"><span>&nbsp;</span></button>
+					</div>
+				</div>
+				
+				<div class="Content">
+					<div data-bind="with: SelectedPlace, visible: IsSelected()">
+						<div class="SelectedPlace">
+							<div class="Title" data-bind="text: displayname2">
+							</div>
+							<img class="Icon" alt="" src="img/Blank.gif" data-bind="attr: { src: photo }" />
+							<div class="Category" data-bind="text: first_cat">
+							</div>
+							<div class="Address">
+								<div class="vicinity" data-bind="text: formatted_address"></div>
+								<div class="miles"><span data-bind="text: miles"></span></div>
+							</div>
+						</div>
+						<div class="EmailOpt" id="EmailOpt">
+							<h3>Enter Your E-mail <span data-bind="visible: !IsForceEmail()">(Optional)</span> <span data-bind="visible: IsForceEmail()">(Required)</span></h3>
+							<p>Please provide an e-mail address if you would like to receive a response to your submission. </p>
+							<div class="FormRow">
+								<div class="FormElement">
+									<input type="email" placeholder="E-Mail Address" id="txtEmailAddress" value="" />
+								</div>
+							</div>
+						</div>
+						
+						<div id="dlgWarnEmail">
+							<div class="TitleBar">REMINDER</div>
+							<div class="Body">
+								<p class="info">
+								You didn't enter an email address.
+								</p>
+								<p class="info">
+								If you want to receive a reply from the business, hit GO BACK and enter your email address.
+								</p>
+								<p class="info">
+								We will NOT share your email with anyone.
+								</p>
+								<p class="info">
+								All emails are hidden on SuperSolver.
+								</p>
+								<div class="FormRow ButtonsRow">
+									<button type="button" class="GreenBtn AFBtn2" id="dlgWarnEmailSubmit">Submit</button>
+									<button type="button" class="GreenBtn AFBtn" id="dlgWarnEmailBack">Go Back</button>
+								</div>
+							</div>
+							<div class="clr"></div>
+						</div>
+						
+						<div class="AdditionalFeedback" >
+							<h3>Additional Feedback?</h3>
+							<div class="AddlFeedbackText" data-bind="text: addl_feedback, visible: has_feedback()" ></div>
+							<button type="button" class="GreenBtn AFBtn" id="btnAdditionFeedbackYes">
+								<span data-bind="visible: !has_feedback()">Yes</span>
+								<span data-bind="visible: has_feedback()">Change</span>
+							</button>
+							<div id="dlgAdditionalFeedback">
+								<div class="TitleBar">Additional Feedback</div>
+								<div class="Body">
+									<div class="FormRow">
+										<div class="FormElement">
+											<textarea cols="25" rows="6" data-bind="value: addl_feedback"></textarea>
+										</div>
+									</div>
+									<div class="FormRow ButtonsRow">
+										<button type="button" class="GreenBtn AFBtn" id="btnAdditionFeedbackSubmit">Enter</button>
+										<button type="button" class="GreenBtn AFBtn" id="btnAdditionFeedbackCancel">Cancel</button>
+									</div>
+								</div>
+								<div class="clr"></div>
+							</div>
+						</div>
+						
+						<div class="SelectedComplaints" >
+							<h3>Confirm Your Selections</h3>
+							<p>Tap Back to change your selections.</p>
+							<table data-bind="foreach: selected_complaints">
+								<tr>
+									<td class="C1"><span data-bind="text:main_name"></span></td>
+									<td class="C2"><span data-bind="text:sub_name"></span></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="BottomAction">
+						<a class="PrevBtn" href="javascript:;">Back</a> | Step 2 of 2 | <a class="NextBtn SubmitBtn"
+							href="javascript:;">Submit</a>
+					</div>
+				</div>
+			</div>	
+			
+			
+			<div class="Page" data-page="ConfirmComplaint" style="display: none;">
+				<div class="Header">
+					<h1>SuperSolver</h1>
+					<div class="LeftBarRegion">
+						<button type="button" class="BarBtn MenuToggle"><span>&nbsp;</span></button>
+						<button type="button" class="BarBtn PrevBtn"><span>&nbsp;</span></button>
+					</div>
+					<div class="RightBarRegion">
+						<button type="button" class="BarBtn NextBtn"><span>&nbsp;</span></button>
+					</div>
+				</div>
+
+				<div class="Content">
+					<div data-bind="with: SelectedPlace, visible: IsSelected()">
+						<div class="SelectedPlace">
+							<div class="Title" data-bind="text: displayname2">
+							</div>
+							<img class="Icon" alt="" src="img/Blank.gif" data-bind="attr: { src: photo }" />
+							<div class="Category" data-bind="text: first_cat">
+							</div>
+							<div class="Address">
+								<div class="vicinity" data-bind="text: formatted_address"></div>
+								<div class="miles"><span data-bind="text: miles"></span></div>
+							</div>
+						</div>
+						<div class="EmailOpt" id="EmailOpt">
+							<h3>Enter Your E-mail <span data-bind="visible: !IsForceEmail()">(Optional)</span> <span data-bind="visible: IsForceEmail()">(Required)</span></h3>
+							<p>Please provide an e-mail address if you would like to receive a response to your submission. </p>
+							<div class="FormRow">
+								<div class="FormElement">
+									<input type="email" placeholder="E-Mail Address" id="txtEmailAddress" value="" />
+								</div>
+							</div>
+						</div>
+						
+						<div id="dlgWarnEmail">
+							<div class="TitleBar">REMINDER</div>
+							<div class="Body">
+								<p class="info">
+								You didn't enter an email address.
+								</p>
+								<p class="info">
+								If you want to receive a reply from the business, hit GO BACK and enter your email address.
+								</p>
+								<p class="info">
+								We will NOT share your email with anyone.
+								</p>
+								<p class="info">
+								All emails are hidden on SuperSolver.
+								</p>
+								<div class="FormRow ButtonsRow">
+									<button type="button" class="GreenBtn AFBtn2" id="dlgWarnEmailSubmit">Submit</button>
+									<button type="button" class="GreenBtn AFBtn" id="dlgWarnEmailBack">Go Back</button>
+								</div>
+							</div>
+							<div class="clr"></div>
+						</div>
+						
+						<div class="AdditionalFeedback" >
+							<h3>Additional Feedback?</h3>
+							<div class="AddlFeedbackText" data-bind="text: addl_feedback, visible: has_feedback()" ></div>
+							<button type="button" class="GreenBtn AFBtn" id="btnAdditionFeedbackYes">
+								<span data-bind="visible: !has_feedback()">Yes</span>
+								<span data-bind="visible: has_feedback()">Change</span>
+							</button>
+							<div id="dlgAdditionalFeedback">
+								<div class="TitleBar">Additional Feedback</div>
+								<div class="Body">
+									<div class="FormRow">
+										<div class="FormElement">
+											<textarea cols="25" rows="6" data-bind="value: addl_feedback"></textarea>
+										</div>
+									</div>
+									<div class="FormRow ButtonsRow">
+										<button type="button" class="GreenBtn AFBtn" id="btnAdditionFeedbackSubmit">Enter</button>
+										<button type="button" class="GreenBtn AFBtn" id="btnAdditionFeedbackCancel">Cancel</button>
+									</div>
+								</div>
+								<div class="clr"></div>
+							</div>
+						</div>
+						
+						<div class="SelectedComplaints" >
+							<h3>Confirm Your Selections</h3>
+							<p>Tap Back to change your selections.</p>
+							<table data-bind="foreach: selected_complaints">
+								<tr>
+									<td class="C1"><span data-bind="text:main_name"></span></td>
+									<td class="C2"><span data-bind="text:sub_name"></span></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="BottomAction">
+						<a class="PrevBtn" href="javascript:;">Back</a> | Step 2 of 2 | <a class="NextBtn SubmitBtn"
+							href="javascript:;">Submit</a>
+					</div>
+				</div>
+				
+				<div class="Page" data-page="ComplaintSent" style="display:none;">
+					<div class="Header">
+						<h1>SuperSolver</h1>
+						<div class="LeftBarRegion">
+							<button type="button" class="BarBtn MenuToggle"><span>&nbsp;</span></button>            
+						</div>
+						<div class="RightBarRegion">            
+						</div>
+					</div>
+					<div class="Content">
+						<div class="SentPage">
+							<div class="Logo"><img src="img/Logo.png" alt="" /></div>
+
+							<div class="Type1" style="display:none;">
+								<h2>Thank You!</h2>
+								<p>For providing your feedback...</p>
+								<p>We are forwarding it to someone who can help.</p>
+								<p>
+									<a href="app.html" class="GreenBtn">BACK TO START</a>
+								</p>
+							</div>
+
+							<div class="Type2" style="display:none;">
+								<h2>Thank You!</h2>
+								<p>For providing your feedback...</p>
+								<p>We are working to get it to someone who can help.</p>
+								<p>In the mean time, please feel free to share your feedback in your Facebook or Twitter pages.</p>
+								<div class="SocialConnect">
+									<a id="PostFB"  class="GrayBtn"><img alt="" src="img/Icons/FB_16.png" /> Facebook</a>
+									<a id="Tweet" class="GrayBtn"><img alt="" src="img/Icons/TW_16.png" /> Tweet</a>
+								</div>
+								<br />
+								<p>
+									<a href="app.html" class="GreenBtn">BACK TO START</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="LoadingWrapper" style="display:none;">
+			<div class="Overlay"></div>
+		<div class="Msg"></div>
+		</div>
+		<div id="DlgOverlay" style="display:none;">
+		</div>
+	</body>
+</html>

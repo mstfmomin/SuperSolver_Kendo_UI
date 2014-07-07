@@ -1,0 +1,55 @@
+﻿.InviteBusiness {
+    margin: 0 auto;
+    min-width: 280px;
+    max-width: 620px;
+    padding: 10px 20px 10px 20px;
+}
+
+.InviteBusiness .Logo {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.InviteBusiness h2 {
+    font-size: 52px;
+    font-weight: normal;
+    line-height: 1em;
+    margin: 0 0 0.3em 0;
+    text-align: center;
+    color: #2b2b2b;
+}
+
+.InviteBusiness h2 .Dull {
+    color: #999;
+}
+
+.InviteBusiness p.Info {
+    color: #666;
+}
+
+.InviteBusinessForm {
+    position: relative;
+}
+
+.InviteBusinessForm input {
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+}
+
+.InviteBusinessForm .FormElement {
+    border: 1px solid #AAA;
+    border-radius: 3px;
+}
+
+#btnInviteBusiness {
+    text-transform: uppercase;
+    height: 32px;
+    padding: 0 20px;
+}
+
+.Orline {
+    color: #666;
+    font-size: 20px;
+    margin-bottom: 3px;
+}

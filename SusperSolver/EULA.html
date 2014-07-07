@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="apple-touch-icon" href="img/AppleIcon.png"/>
+        <link rel="shortcut icon" href="img/favicon.ico" />
+        <title>SuperSolver</title>
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/supersolver.js"></script>
+        
+        <link href="css/App.css" rel="stylesheet" type="text/css" />
+        
+        <script src="js/Core/Core.All.js" type="text/javascript"></script>
+        <script src="js/App.js" type="text/javascript"></script>
+        
+        
+        <script type="text/javascript">
+ 
+            document.getElementById("MenuName").innerHTML=localStorage.CustomerName;
+
+            $(document).ready(function(){
+                              
+                              if (localStorage.CustomerID > 0){
+                              document.getElementById("menuNotLoggedIn").style.display = "none";
+                              document.getElementById("menuLoggedIn").style.display = "block";
+                              
+                              
+                              document.getElementById("joinNotLoggedIn").style.display = "none";
+                              document.getElementById("joinLoggedIn").style.display = "inline-block";
+                              
+                              }
+                              else
+                              {
+                              document.getElementById("menuNotLoggedIn").style.display = "block";
+                              document.getElementById("menuLoggedIn").style.display = "none";
+                              
+                              document.getElementById("joinNotLoggedIn").style.display = "inline-block";
+                              document.getElementById("joinLoggedIn").style.display = "none";
+                              
+                              }
+                              });
+            </script>
+        
+</head>
+<body>
+    <div class="Container">
+<div class="MenuView">
+    <div class="MenuViewInner">
+        <div>
+            <div class="UserInfo">
+                <a href="javascript:;" class="MenuToggle">
+                    <img alt="" src="img/Icons/LeftRound.png" /></a> <span id="MenuName"></span></div>
+            <ul class="MenuNav">
+                <li><a href="app.html">Start</a></li>
+                <li><a href="messages.html">Messages</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="invitebusiness.html">Invite a Biz</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="MenuNav" id="menuNotLoggedIn" style="display:none">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+            <ul class="MenuNav" id="menuLoggedIn" style="display:none">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="MenuNav">
+                <li><a href="legal.html">Legal</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+        <div class="MainView">
+            <div class="Page" data-page="EULA">
+    <div class="Header">
+        <h1>Legal</h1>
+        <div class="LeftBarRegion">
+            <button type="button" class="BarBtn MenuToggle"><span>&nbsp;</span></button>
+            <a class="BarBtn PrevBtn" href="legal.html"><span>&nbsp;</span></a>
+        </div>
+        <div class="RightBarRegion">
+        </div>
+    </div>
+    <div class="Content">
+        <div class="StaticContent">
+            <h4>End User Licensing Agreement</h4>
+            <p>
+                Thank you for your decision to download software from SuperSolver, a division of
+                Danes Media, Inc. ("SuperSolver").</p>
+            <p>
+                SuperSolver provides a software application for your mobile platform (the "App"),
+                that enables a variety of innovative and interactive features for posting and browsing
+                content and location-based searches and services (the "SuperSolver Service").</p>
+            <p>
+                The App is provided to you on a limited license, not sold to you.</p>
+            <p>
+                By downloading or using the App, you:</p>
+            <ul class="Num">
+                <li>Acknowledge that the App is licensed, not sold to you, and that by downloading the
+                    App, or otherwise accessing or using the SuperSolver Service, you agree that you
+                    have read, understood, and agree to be bound by this End User License Agreement
+                    (the "EULA") and the <a href="termsandconditions.html">SuperSolver
+                        Terms of Use and related policies</a> (the "Terms"), as updated from time to
+                    time, which govern your use of the App and the SuperSolver Service, and which are
+                    hereby incorporated herein by reference. You may use the App and the SuperSolver
+                    Service only as set forth in this EULA and the Terms;</li>
+                <li>Consent to the collection, use, sharing and transfer of your data as outlined in
+                    the <a href="privacypolicy.html">SuperSolver Privacy Policy</a>, as updated from time to time, which is hereby incorporated
+                    herein by reference;</li>
+                <li>Acknowledge that third party fees may apply to the use and operation of your handset
+                    device in connection with your use of the App, such as phone service, data access,
+                    or messaging capabilities, and that you are solely responsible for payment of any
+                    and all such fees;</li>
+                <li>Acknowledge that the App may contain third party content, and that SuperSolver is
+                    not responsible for any such content; and</li>
+                <li>Agree to any acknowledge the following terms and conditions, including without limitation
+                    the "Notice Regarding Apple" if downloaded from iTunes.</li>
+            </ul>
+            <h4>TERMS GOVERNING APP USE, LOCATION-BASED SERVICES</h4>
+            <p>
+                Subject to the restrictions set forth in this EULA and the Terms, SuperSolver grants
+                you a limited, non-exclusive, non-transferable, non-sublicensable, revocable license
+                to install and use one copy of the App in object code format, solely for your personal
+                use, on only one mobile device that you own or control. The App provides features
+                that enable SuperSolver to tailor your experience based on your location ("Location-based
+                Services"). In order to use Location-based Services, you must allow SuperSolver
+                access to your localized position through your mobile phone, which SuperSolver may
+                accomplish through a variety of means, including GPS location, if available. If
+                you choose to disable location-based services, you will not be able to utilize certain
+                features of the App. By authorizing SuperSolver to access your location, you agree
+                and acknowledge that (i) device data we collect from you is directly relevant to
+                your use of the App and (ii) SuperSolver may provide Location-based Services related
+                to your then-current location for the next 24 hours. The SuperSolver Service may
+                provide certain real time route guidance. YOUR USE OF THIS REAL TIME ROUTE GUIDANCE
+                APPLICATION IS AT YOUR SOLE RISK. LOCATION DATA MAY NOT BE ACCURATE.</p>
+            <h4>TERMS GOVERNING THIRD PARTY CONTENT</h4>
+            <p>
+                You understand that when using the App you may be exposed to content from a variety
+                of sources ("Third-Party Content"), and that SuperSolver is not responsible for
+                the accuracy, integrity, qualify, legality, usefulness, safety, or intellectual
+                property rights of or relating to such Third-Party Content. You further understand
+                and acknowledge that you may be exposed to Third-Party Content that is inaccurate,
+                offensive, indecent, or objectionable, and you agree to waive, and hereby do waive,
+                any legal or equitable rights or remedies you have or may have against SuperSolver
+                with respect thereto. SuperSolver does not endorse any Third-Party Content on any
+                App. Under no circumstances will SuperSolver be liable in any way for or in connection
+                with any Third-Party Content, including, but not limited to, for any inaccuracies,
+                errors or omissions in any Third-Party Content, any intellectual property infringement
+                with regard to any Third-Party Content, or for any loss or damage of any kind incurred
+                as a result of the use of any Third-Party Content posted, electronically mailed
+                or otherwise displayed or transmitted through the App.</p>
+            <h4>TERMS GOVERNING USER POSTINGS</h4>
+            <p>
+                The App provides certain features that enable you to post a variety of content to
+                the SuperSolver Service ("User Postings"). You, and not SuperSolver, are solely
+                responsible for all User Postings that you make available through the SuperSolver
+                Service. Similarly, SuperSolver is not responsible to you for any User Postings
+                provided by other users of the SuperSolver Service.</p>
+            <p>
+                By submitting User Postings to SuperSolver, you hereby grant SuperSolver and its
+                affiliates a worldwide, non-exclusive, fully paid-up, royalty-free, perpetual, irrevocable,
+                sublicensable, and transferable license (without any obligation to exercise) to
+                use, reproduce, and modify your User Postings in connection with the SuperSolver
+                Service, as more fully set forth in the Terms. SuperSolver does not allow infringing
+                materials on the SuperSolver Service, and you agree and acknowledge that SuperSolver
+                may remove User Submissions that are the subject of Digital Millennium Copyright
+                Act compliant takedown notices, and to disable accounts of users determined to be
+                "repeat infringers." You further agree to indemnify and hold SuperSolver and its
+                affiliates harmless from all claims, damages, and liabilities arising from your
+                User Postings, or any breach by you of this EULA or the Terms.</p>
+            <h4>WARRANTY DISCLAIMER AND LIMITATION OF LIABILITY</h4>
+            <p>
+                THE APP AND THE SUPERSOLVER SERVICE ARE PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTY
+                OF ANY KIND. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, SUPERSOLVER DISCLAIMS
+                ALL WARRANTIES, EXPRESS, IMPLIED, STATUTORY OR OTHERWISE, INCLUDING BUT NOT LIMITED
+                TO IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE AND MERCHANTABILITY. SUPERSOLVER
+                EXPRESSLY DISCLAIMS ANY WARRANTIES OF ANY KIND WITH RESPECT TO THE ACCURACY OR FUNCTIONALITY
+                OF LOCATION BASED SERVICES, AND WITH RESPECT TO THE ACCURACY, VALIDITY, OR COMPLETENESS
+                OF ANY INFORMATION AVAILABLE THROUGH THE SuperSolver SERVICE. UNDER NO CIRCUMSTANCES
+                WILL SUPERSOLVER BE LIABLE FOR ANY CONSEQUENTIAL, SPECIAL, INDIRECT, INCIDENTAL
+                OR PUNITIVE DAMAGES WHATSOEVER ARISING OUT OF THE USE OR INABILITY TO USE THE APP
+                OR THE SUPERSOLVER SERVICE, EVEN IF SUPERSOLVER HAS BEEN ADVISED OF THE POSSIBILITY
+                OF SUCH DAMAGES. IN NO EVENT WILL SuperSolver'S AGGREGATE LIABILITY FOR DAMAGES
+                ARISING OUT OF THIS EULA OR THE TERMS EXCEED THE AMOUNTS PAID BY YOU FOR THE APP.
+                SOME JURISDICTIONS DO NOT ALLOW LIMITATIONS ON IMPLIED WARRANTIES OR THE EXCLUSION
+                OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES, SO THE ABOVE
+                LIMITATIONS MAY NOT APPLY TO YOU.</p>
+            <h4>NOTICE REGARDING APPLE (IF APPLICABLE)</h4>
+            <p>
+                You acknowledge that the Terms and this EULA are between you and SuperSolver only,
+                not with Apple, and Apple is not responsible for the App and the content thereof.
+                Apple has no obligation whatsoever to furnish any maintenance and support services
+                with respect to the App. In the event of any failure of an App to conform to any
+                applicable warranty, then you may notify Apple and Apple will refund the purchase
+                price for the relevant App to you; and, to the maximum extent permitted by applicable
+                law, Apple has no other warranty obligation whatsoever with respect to the App.
+                Apple is not responsible for addressing any claims by you or any third party relating
+                to the App or your possession and/or use of the App, including, but not limited
+                to: (i) product liability claims; (ii) any claim that the App fails to conform to
+                any applicable legal or regulatory requirement; and (iii) claims arising under consumer
+                protection or similar legislation. Apple is not responsible for the investigation,
+                defense, settlement and discharge of any third party claim that the App or your
+                possession and use of the App infringes that third party's intellectual property
+                rights. You agree to comply with any applicable third party terms, when using the
+                App. Apple, and Apple's subsidiaries, are third party beneficiaries of these Terms
+                and this EULA, and upon your acceptance of the Terms and this EULA, Apple will have
+                the right (and will be deemed to have accepted the right) to enforce the Terms and
+                this EULA against you as a third party beneficiary of the Terms and this EULA. You
+                hereby represent and warrant that (i) you are not located in a country that is subject
+                to a U.S. Government embargo, or that has been designated by the U.S. Government
+                as a "terrorist supporting" country; and (ii) you are not listed on any U.S. Government
+                list of prohibited or restricted parties.</p>
+            <h4>CONTACTING SUPERSOLVER</h4>
+            <p>
+                The SuperSolver Service hereunder is offered by SuperSolver:</p>
+            <p>
+                110 Chestnut Ridge Road<br />
+                Suite 258<br />
+                Montvale, NJ 07645<br />
+                info@SuperSolver.com<br />
+                Last updated December 8, 2012<br />
+            </p>
+        </div>
+    </div>
+    <div class="Footer">
+        <div class="JoinInvite">
+            <a href="login.html" class="Join" id="joinNotLoggedIn" style="display:inline"><img alt="" src="img/Blank.gif" /><span>Sign In / Join</span></a>
+            <a href="logout.html" class="Join" id="joinLoggedIn"style="display:none"><img alt="" src="img/Blank.gif" /><span>Logout</span></a>
+            <a href="invitebusiness.html" class="Invite"><img alt="" src="img/Blank.gif" /><span>Invite a Biz</span></a>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+    <div class="LoadingWrapper" style="display:none;">
+        <div class="Overlay"></div>
+        <div class="Msg"></div>
+    </div>
+    <div id="DlgOverlay" style="display:none;"></div>
+</body>
+</html>

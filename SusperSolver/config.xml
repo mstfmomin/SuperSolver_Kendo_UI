@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.supersolver.supersolver" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>SuperSolver</name>
+    <description>
+        SuperSolver device specific app using Apache Cordova.
+    </description>
+    <author email="rsamroengraja@supersolver.com" href="http://www.SuperSolver.com">
+        SuperSolver Team
+    </author>
+    <content src="app.html" />
+    <access origin="*" />
+</widget>

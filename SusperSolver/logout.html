@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon" href="img/AppleIcon.png"/>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <title>SuperSolver</title>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/Core/Core.All.js" type="text/javascript"></script>
+    <script src="js/supersolver.js" type="text/javascript"></script>
+    <script src="cdv-plugin-fb-connect.js"></script>
+    <script src="facebook-js-sdk.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener("deviceready", DeviceReady, false);
+        
+        function DeviceReady()
+            {
+                console.log("Calling FB.init");
+                FB.init({ appId: SuperSolver.FB_ID, nativeInterface: CDV.FB, useCachedDialogs: false });
+        
+                $.ajax({
+                    type: 'POST',
+                    url: SuperSolver.theURL + "logout2",
+                    data: null,
+                    crossDomain: true,
+                    xhrFields:{
+                    withCredentials: true
+                    },
+                    success: function(data){
+                        if (data.Success == true){
+                            localStorage.setItem("CustomerID", "0");
+                            localStorage.setItem("CustomerFirstName", "");
+                            localStorage.setItem("CustomerLastName", "");
+                            localStorage.setItem("CustomerName", "Not Logged In");
+                            localStorage.setItem("CustomerEmail", "");
+                            localStorage.setItem("CustomerPassword", "");
+                            localStorage.setItem("LoginType", "0"); // 0 - Not logged in, 1 - SS, 2 - FB, 3 - GG, 4 - TW
+                            localStorage.setItem("GG_ID", "");
+                            localStorage.setItem("GG_Token", "");
+                            localStorage.setItem("GG_RefreshToken", "");
+                            localStorage.setItem("GG_TokenExpires", "");
+                            localStorage.setItem("TW_ID", "");
+                            localStorage.setItem("TW_Handle", "");
+                            localStorage.setItem("TW_Key", "");
+                            localStorage.setItem("TW_Secret", "");
+                            localStorage.setItem("FB_ID", "");
+                            localStorage.setItem("FB_Key", "");
+                            localStorage.setItem("AuthTokenName", "");
+                            localStorage.setItem("AuthTokenValue", "");
+                            localStorage.setItem("AuthTokenExpires", "");
+                            localStorage.setItem("Initialized", "1");
+                        console.log("Logging out of Facebook");
+                        FB.logout(null); //logout of Facebook
+                        window.location.href = "app.html";
+                        //$.mobile.changePage('app.html');
+                        }
+                    }
+                });
+             };
+    </script>
+</head>
+<body>
+    <div class="LogoutForm" style="display: none;">
+                <form method="post" id="LogoutForm">
+                            <!--<input type="text" value=localStorage.CustomerName>-->
+                </form>
+    </div>
+
+</body>
+</html>

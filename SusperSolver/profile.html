@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon" href="img/AppleIcon.png"/>
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>SuperSolver</title>        
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova_plugins.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/supersolver.js"></script>
+
+    <script type="text/javascript" src="js/Core/Core.All.js"></script>
+    <script type="text/javascript" src="js/App.js"></script>
+
+    <link href="css/App.css" rel="stylesheet" type="text/css" />
+
+    <link href="css/Customer.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        if (localStorage.CustomerID==="0"){
+            window.location.href="login.html";
+        }
+
+        if (window.addEventListener) {
+            window.addEventListener("load", function () {
+                // Set a timeout...
+                setTimeout(function () {
+                    // Hide the address bar!
+                    window.scrollTo(0, 1);
+                }, 0);
+            });
+        }
+    </script>
+
+    <script src="js/Customer.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        console.log("Adding doc ready fn");
+        $(document).ready(function () {
+            document.getElementById("MenuName").innerHTML=localStorage.CustomerName;
+
+            SuperSolver.Profile.Init();
+                          
+                          if (localStorage.CustomerID > 0){
+                          document.getElementById("menuNotLoggedIn").style.display = "none";
+                          document.getElementById("menuLoggedIn").style.display = "block";
+                          
+                          }
+                          else
+                          {
+                          document.getElementById("menuNotLoggedIn").style.display = "block";
+                          document.getElementById("menuLoggedIn").style.display = "none";
+                          
+                          }
+                          
+            document.getElementById("FirstName").value = localStorage.CustomerFirstName;
+            document.getElementById("LastName").value = localStorage.CustomerLastName;
+            document.getElementById("Email").value = localStorage.CustomerEmail;
+            
+            if (localStorage.LoginType != "1") {
+                document.getElementById("ChangePwdForm").style.display = "none";
+            }
+            
+            //document.getElementById("ProfileForm").action = SuperSolver.theURL + "UpdateProfile2"; //shouldn't need
+
+                          //PhoneGap Profile Handler
+        var frm = $('#ProfileForm');
+        
+        frm.submit(function(event){
+                   $.ajax({
+                          type: frm.attr('method'),
+                          url: SuperSolver.theURL + "UpdateProfile2",
+                          data: frm.serialize(),
+                          //dataType: "jsonp",
+                          crossDomain: true,
+                          xhrFields:{
+                          withCredentials: true
+                          },
+                          success: function(data){
+                          if (data.Success == true){
+                          localStorage.CustomerFirstName = data.CustomerFirstName;
+                          localStorage.CustomerLastName = data.CustomerLastName;
+                          localStorage.CustomerName = data.CustomerFirstName + " " + data.CustomerLastName;
+                          localStorage.CustomerEmail = data.CustomerEmail;
+                          navigator.notification.alert("Profile successfully updated!",null,"SuperSolver");
+                          }
+                          }
+                          });
+                   event.preventDefault();
+                   });
+                          
+        var frm2 = $('#ChangePwdForm');
+          frm2.submit(function(event){
+                     $.ajax({
+                            type: frm2.attr('method'),
+                            url: SuperSolver.theURL + "UpdatePassword2",
+                            data: frm2.serialize(),
+                            //dataType: "jsonp",
+                            crossDomain: true,
+                            xhrFields:{
+                            withCredentials: true
+                            },
+                            success: function(data){
+                            if (data.Success == true){
+                            localStorage.CustomerPassword = document.getElementById("Password").value;
+                            navigator.notification.alert("Password successfully updated!",null,"SuperSolver");
+                            }
+                            }
+                            });
+                     event.preventDefault();
+                     });
+
+                          
+        });
+        </script>
+
+    
+</head>
+<body>
+    <div class="Container">
+<div class="MenuView">
+    <div class="MenuViewInner">
+        <div>
+            <div class="UserInfo">
+                <a href="javascript:;" class="MenuToggle">
+                    <img alt="" src="img/Icons/LeftRound.png" /></a> <span id="MenuName"></span></div>
+            <ul class="MenuNav">
+                <li><a href="app.html">Start</a></li>
+                <li><a href="messages.html">Messages</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="invitebusiness.html">Invite a Biz</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="MenuNav" id="menuNotLoggedIn" style="display:none">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+            <ul class="MenuNav" id="menuLoggedIn" style="display:none">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="MenuNav">
+                <li><a href="legal.html">Legal</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+        <div class="MainView">
+            <div class="Page" data-page="Legal">
+    <div class="Header">
+        <h1>Your Profile</h1>
+        <div class="LeftBarRegion">
+            <button type="button" class="BarBtn MenuToggle"><span>&nbsp;</span></button>
+        </div>
+        <div class="RightBarRegion"></div>        
+    </div>    
+    <div class="Content">
+        <div class="ProfileWrap">
+            
+                <p class="Info">
+                    Please use the following forms to update your SuperSolver profile or password.
+                </p>
+<form method="post" class="ProfileForm" id="ProfileForm">
+    <div class="FormRow">
+        <label class="Label">First Name<span class="Astrix">*</span></label>
+        <div class="FormElement">
+            <input id="FirstName" maxlength="50" name="FirstName" type="text"/>
+            
+        </div>
+    </div>
+    <div class="FormRow">
+        <label class="Label">Last Name</label>
+        <div class="FormElement">
+            <input id="LastName" maxlength="50" name="LastName" type="text"/>
+            
+        </div>
+    </div>
+    <div class="FormRow">
+        <label class="Label">E-Mail Address<span class="Astrix">*</span></label>
+        <div class="FormElement">
+            <input id="Email" maxlength="255" name="Email" type="email"/>
+            
+        </div>
+    </div>    
+    <div class="FormRow">
+        <div class="FormElement">
+            <input id="HasPasswordChange" name="HasPasswordChange" type="hidden" value="True" />
+            <button type="submit" class="Btn GreenBtn">Update Profile</button>
+        </div>
+    </div>
+    
+</form>
+                <br />
+<form method="post" id="ChangePwdForm" class="ChangePwdForm">
+    <div class="FormRow">
+        <label class="Label">New Password<span class="Astrix">*</span></label>
+        <div class="FormElement">
+            <input id="Password" maxlength="50" name="Password" type="password" />
+            
+        </div>
+    </div>
+    <div class="FormRow">
+        <label class="Label">Verify New Password<span class="Astrix">*</span></label>
+        <div class="FormElement">
+            <input id="ConfirmPassword" maxlength="50" name="ConfirmPassword" type="password" />
+            
+        </div>
+    </div>
+    <div class="FormRow">
+        <div class="FormElement">
+            <button type="submit" class="Btn GreenBtn">Change Password</button>
+        </div>
+    </div>
+    
+</form>
+        </div>
+    </div>    
+</div>
+
+
+        </div>
+    </div>
+    <div class="LoadingWrapper" style="display:none;">
+        <div class="Overlay"></div>
+        <div class="Msg"></div>
+    </div>
+    <div id="DlgOverlay" style="display:none;"></div>
+</body>
+</html>

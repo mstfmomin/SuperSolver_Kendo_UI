@@ -1,0 +1,557 @@
+html, body {
+    background-color: #FFF;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:focus, a:active {
+    outline: none;
+}
+
+button, input {
+    font-family: "Helvetica Neue" , "Roboto" , "Droid Sans" ,Helvetica,Arial,sans-serif;
+}
+
+span.field-validation-error {
+    display: block;
+    font-size: 12px;
+    color: #f00;
+    font-weight: bold;
+}
+
+.Astrix {
+    color: #f00;
+    font-weight: bold;
+    font-size: 12px;
+    vertical-align: super;
+}
+
+.ErrText {
+    color: #f00;
+    font-weight: bold;
+}
+
+.SuccText {
+    color: #6aa500;
+    font-weight: bold;
+}
+
+.GreenBtn, .BlueBtn, .BarBtn, .GrayBtn {
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.GreenBtn {
+    background-color: #6aa500;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8fc82e), to(#6aa500));
+    background-image: -webkit-linear-gradient(top, #8fc82e, #6aa500);
+    background-image: -moz-linear-gradient(top, #8fc82e, #6aa500);
+    background-image: -ms-linear-gradient(top, #8fc82e, #6aa500);
+    background-image: -o-linear-gradient(top, #8fc82e, #6aa500);
+}
+
+.BlueBtn {
+    background-color: #1c7ebd;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1c8dd7), to(#1c7ebd));
+    background-image: -webkit-linear-gradient(top, #1c8dd7, #1c7ebd);
+    background-image: -moz-linear-gradient(top, #1c8dd7, #1c7ebd);
+    background-image: -ms-linear-gradient(top, #1c8dd7, #1c7ebd);
+    background-image: -o-linear-gradient(top, #1c8dd7, #1c7ebd);
+}
+
+.BarBtn {
+    background-color: #1c7ebd;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2199eb), to(#1c7ebd));
+    background-image: -webkit-linear-gradient(top, #2199eb, #1c7ebd);
+    background-image: -moz-linear-gradient(top, #2199eb, #1c7ebd);
+    background-image: -ms-linear-gradient(top, #2199eb, #1c7ebd);
+    background-image: -o-linear-gradient(top, #2199eb, #1c7ebd);
+    -webkit-box-shadow: 1px 1px 0 #5fbeff;
+    box-shadow: 1px 1px 0 #5fbeff;
+    padding: 0;
+    height: 32px;
+}
+
+a.BarBtn {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.GrayBtn {
+    color: #222;
+    border: 1px solid #CCC;
+    background-color: #f1f1f1;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f8f8f8), to(#ececec));
+    background-image: -webkit-linear-gradient(top, #f8f8f8, #ececec);
+    background-image: -moz-linear-gradient(top, #f8f8f8, #ececec);
+    background-image: -ms-linear-gradient(top, #f8f8f8, #ececec);
+    background-image: -o-linear-gradient(top, #f8f8f8, #ececec);
+    box-shadow: none;
+    text-shadow: 1px 1px 0 #FFF;
+}
+
+/*
+.OrangeLabel {
+    color: #fff;
+    border: none;
+    background-color: #e93f01;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f57303), to(#e93f01));
+    background-image: -webkit-linear-gradient(top, #f57303, #e93f01);
+    background-image: -moz-linear-gradient(top, #f57303, #e93f01);
+    background-image: -ms-linear-gradient(top, #f57303, #e93f01);
+    background-image: -o-linear-gradient(top, #f57303, #e93f01);
+}
+*/
+
+.BarBtn span {
+    display: inline-block;
+    height: 32px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0,0,0,0.4);
+    box-shadow: inset 1px 1px 0 rgba(0,0,0,0.4);
+}
+
+.Container {
+    min-height: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    background: #FFF;
+}
+
+@media (min-width: 801px) {
+    html, body {
+        background: #f6f6f6;
+    }
+    .Container {
+        width: 640px;
+        border: 1px solid #CCC;
+        border-top: none;
+        border-bottom: none;
+    }
+}
+
+@media (min-width: 1025px) {
+    html, body {
+        background: #f6f6f6;
+    }
+    .Container {
+        width: 800px;
+        border: 1px solid #CCC;
+        border-top: none;
+        border-bottom: none;
+    }
+}
+
+.MainView {
+    position: relative;
+    left: 0;
+}
+
+.ShowMenu .MainView {
+    left: 200px;
+}
+
+.MenuToggle {
+    width: 36px;
+}
+
+.MenuToggle span {
+    width: 36px;
+    background: transparent url(../img/Icons/Menu.png) no-repeat scroll center center;
+}
+
+.MenuView {
+    position: absolute;
+    left: -200px;
+    width: 200px;
+    background-color: #333;
+    min-height: 100%;
+}
+
+.ShowMenu .MenuView {
+    left: 0;
+}
+
+.MenuViewInner {
+    position: absolute;
+    width: 100%;
+}
+
+.MenuViewInner .Top {
+}
+
+.MenuViewInner .MenuSep {
+    margin-top: 20px;
+}
+
+.MenuViewInner .Bottom {
+    bottom: 0;
+}
+
+ul.MenuNav, ul.MenuNav li {
+    list-style-type: none;
+    margin: 0;
+}
+
+ul.MenuNav {
+    padding: 20px;
+    margin-right: 0px;
+}
+
+ul.MenuNav li {
+    border-bottom: 1px solid #494949;
+}
+
+ul.MenuNav li:last-child {
+    border-bottom: none;
+}
+
+ul.MenuNav li a {
+    display: block;
+    font-size: 20px;
+    line-height: 1em;
+    padding: 10px 0 10px 0;
+    color: #FFF;
+}
+
+ul.MenuNav li a:hover {
+    text-decoration: none;
+}
+
+ul.MenuNav li a:focus {
+    outline: none;
+}
+
+.UserInfo {
+    color: #DDD;
+    font-size: 15px;
+    padding: 14px 20px 4px 48px;
+    border-bottom: 1px solid #CCC;
+    line-height: 1;
+    min-height: 24px;
+    position: relative;
+}
+
+.UserInfo span {
+    color: #FFF;
+}
+
+.UserInfo a {
+    position: absolute;
+    left: 18px;
+    top: 10px;
+}
+
+.UserInfo .MenuToggle {
+    width: auto;
+}
+
+.Page {
+    /*position: relative;*/
+}
+
+.Page .Header {
+    position: relative;
+    height: 42px;
+    background-color: #1c7ebd;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1c8dd7), to(#1c7ebd));
+    background-image: -webkit-linear-gradient(top, #1c8dd7, #1c7ebd);
+    background-image: -moz-linear-gradient(top, #1c8dd7, #1c7ebd);
+    background-image: -ms-linear-gradient(top, #1c8dd7, #1c7ebd);
+    background-image: -o-linear-gradient(top, #1c8dd7, #1c7ebd);
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.Page .Header .LeftBarRegion {
+    position: absolute;
+    left: 8px;
+    top: 4px;
+}
+
+.Page .Header .RightBarRegion {
+    position: absolute;
+    right: 8px;
+    top: 4px;
+}
+
+.LeftBarRegion .BarBtn + .BarBtn {
+    margin-right: 4px;
+}
+
+.RightBarRegion .BarBtn + .BarBtn {
+    margin-left: 4px;
+}
+
+.Page .Header h1 {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    right: 50px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 23px;
+    font-weight: normal;
+    line-height: 1em;
+    color: #FFF;
+    background-color: transparent;
+}
+
+.Page .Footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+}
+
+.Page .Content {
+    padding-bottom: 40px;
+}
+
+.Page.NoFooter .Content {
+    padding-bottom: 0;
+}
+
+.Page .BottomAction {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /*width: 280px;     left: 50%;     margin-left: -120px;*/
+    height: 24px;
+    padding: 10px 4px 5px 4px;
+    color: #FFF;
+    font-size: 18px;
+    line-height: 1em;
+    text-align: center;
+    border: 1px solid #8fc82e;
+    background-color: #6aa500;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8fc82e), to(#6aa500));
+    background-image: -webkit-linear-gradient(top, #8fc82e, #6aa500);
+    background-image: -moz-linear-gradient(top, #8fc82e, #6aa500);
+    background-image: -ms-linear-gradient(top, #8fc82e, #6aa500);
+    background-image: -o-linear-gradient(top, #8fc82e, #6aa500);
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+@media (max-width: 640px) {
+    .Page .BottomAction.KBDisplay {
+        position: absolute;
+    }
+    
+    .Page .Header.KBDisplay {
+        position: absolute;
+    }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .Page .BottomAction.KBDisplay {
+        position: absolute;
+    }
+    
+    .Page .Header.KBDisplay {
+        position: absolute;
+    }
+}
+
+@media (min-width: 801px) {
+    .Page .BottomAction {
+        position: absolute;
+    }
+}
+
+@media (max-width: 640px) {
+    
+    .Page {
+        padding-top: 42px;
+    }
+    
+    .ShowMenu .Page {
+        padding-top: 0;
+    }
+
+    .Page .Header {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 9;
+    }
+    
+    .ShowMenu .Page .Header {
+        position: relative;
+    }
+}
+
+.Hide {
+    display: none;
+}
+
+.LoadingWrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.LoadingWrapper .Overlay {
+    position: absolute;
+    left: 0;
+    height: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: #000;
+    opacity: 0.7;
+}
+
+.LoadingWrapper .Msg {
+    position: fixed;
+    width: 75px;
+    height: 75px;
+    border-radius: 8px;
+    background: #293955 url(../img/Loader.gif) no-repeat scroll center center;
+    z-index: 1001;
+}
+
+.ErrorPage {
+    padding: 20px;
+}
+
+.PrevBtn {
+    width: 32px;
+}
+
+.PrevBtn span {
+    width: 32px;
+    background: transparent url(../img/Icons/LeftArw.png) no-repeat scroll center center;
+}
+
+.PrevBtn.NoAct {
+    display: none;
+}
+
+.NextBtn {
+    width: 32px;
+}
+
+.NextBtn span {
+    width: 32px;
+    background: transparent url(../img/Icons/RightArw.png) no-repeat scroll center center;
+}
+
+.RefreshBtn {
+    width: 32px;
+}
+
+.RefreshBtn span {
+    width: 32px;
+    background: transparent url(../img/Icons/Refresh.png) no-repeat scroll center center;
+}
+
+.JoinInvite {
+    height: 39px;
+    background-color: #eee;
+    border-top: 1px solid #999;
+}
+
+.JoinInvite a {
+    display: inline-block;
+    width: 49%;
+    height: 32px;
+    padding-top: 7px;
+    line-height: 1em;
+    text-align: center;
+    color: #333;
+}
+
+.JoinInvite a img {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: transparent url(../img/Icons/NextRound.png) no-repeat scroll 0 0;
+}
+
+.JoinInvite a span {
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    left: 6px;
+}
+
+.JoinInvite a:hover {
+    background-color: #f3f3f3;
+}
+
+.JoinInvite .Join {
+    border-right: 1px solid #bbb;
+}
+
+
+ul.FullList {
+    margin: 0;
+    padding: 0;
+}
+
+ul.FullList li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    border-bottom: 1px solid #cdcdcd;
+}
+
+ul.FullList li a {
+    display: block;
+    line-height: 1em;
+    padding: 0.75em 60px 0.75em 0.5em;
+    font-size: 18px;
+    color: #333;
+    background: transparent url(../img/Icons/NextRound.png) no-repeat scroll 98% center;
+}
+
+.StaticContent {
+    padding: 15px;
+    color: #555;
+}
+
+.StaticContent h4 {
+    color: #454545;
+    margin: 20px 0;
+}
+
+ul.Num {
+    margin: 0 0 1em 3.25em;
+}
+
+ul.Num li {
+    list-style-type: decimal;
+    margin-bottom: 0.1em;
+}
+
+.TextBtn span {
+    height: 12px;
+    line-height: 1em;
+    padding: 9px 7px 11px 8px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#DlgOverlay {
+    position: fixed;
+    left: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;   
+    width: 100%; 
+    z-index: 10;
+    background-color: #000;
+    opacity: 0.7;
+}

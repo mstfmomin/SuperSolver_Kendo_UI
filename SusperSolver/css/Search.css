@@ -1,0 +1,609 @@
+.Start, .SentPage {
+    margin: 0 auto;
+    min-width: 280px;
+    max-width: 620px;
+    padding: 10px 20px 10px 20px
+}
+
+.Start .Logo, .SentPage .Logo {
+    text-align: center;
+    margin-bottom: 15px
+}
+
+.Start h2 {
+    font-size: 52px;
+    font-weight: normal;
+    line-height: 1em;
+    margin: 0 0 .3em 0;
+    text-align: center;
+    color: #2b2b2b
+}
+
+.Start h2 .Dull {
+    color: #999
+}
+
+.Start p.Info {
+    color: #666
+}
+
+.SearchForm {
+    position: relative
+}
+
+.SearchForm input {
+    padding: 4px 0;
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    background-image: none
+}
+
+.SearchForm .FormElement {
+    border: 1px solid #AAA;
+    border-radius: 3px
+}
+
+.LocationPH {
+    padding-left: 36px
+}
+
+.LocationPH input.BlueTxt {
+    color: #1b7dbb
+}
+
+.BusinessPH {
+    padding-left: 4px
+}
+
+.LocationIcon {
+    position: absolute;
+    left: 8px;
+    top: 5px;
+    width: 24px;
+    height: 24px;
+    background: transparent url(../img/Icons/Location.png) no-repeat scroll 0 0
+}
+
+.Scan, .SearchMap, .LoadMore, .HomeMap, .AFBtn {
+    text-transform: uppercase;
+    height: 32px;
+    padding: 0 20px
+}
+
+.Search {
+    height: 60px;
+    padding: 0 20px    
+}
+
+.AFBtn2 {
+    text-transform: uppercase;
+    height: 23px;
+    padding: 0 12px;
+    font-size: 12px;
+    vertical-align: middle
+}
+
+.LocationError {
+    background-color: #fcf8e3;
+    border: 1px solid #fbeed5;
+    color: #C09853;
+    border-radius: 4px;
+    padding: 8px 14px
+}
+
+.SearchSm {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 32px
+}
+
+.SearchSm span {
+    width: 32px;
+    background: transparent url(../img/Icons/Search.png) no-repeat scroll center center
+}
+
+.TopSearchPH {
+    position: absolute;
+    left: 54px;
+    right: 62px;
+    top: 4px;
+    background-color: #FFF;
+    border-radius: 4px;
+    height: 20px;
+    padding: 6px;
+    color: #1b7dbb;
+    cursor: pointer;
+    overflow: hidden
+}
+
+.TopSearchPH img {
+    width: 24px;
+    height: 24px;
+    background: transparent url(../img/Icons/Location.png) no-repeat scroll 0 0
+}
+
+.SearchExt {
+    display: none;
+    padding: 8px 8px 0 8px;
+    padding-top: 8px
+}
+
+.Header.BigHd {
+    height: 88px
+}
+
+.BigHd .Normal {
+    display: none
+}
+
+.BigHd .SearchExt {
+    display: block
+}
+
+.SearchExt .LocationPH, .SearchExt .BusinessPH {
+    background-color: #FFF;
+    padding-left: 4px
+}
+
+.SearchExt .LocationPH {
+    margin-right: 40px
+}
+
+.SearchExt .FormInline label.label {
+    width: 40px;
+    text-align: left;
+    color: #FFF;
+    margin-top: 8px
+}
+
+.SearchExt .FormInline .FormElement {
+    margin-left: 45px
+}
+
+#Google_Map {
+    width: 300px;
+    height: 200px;
+    border: 1px solid #999
+}
+
+#Google_Map img {
+    width: auto;
+    height: auto;
+    max-width: none;
+    max-height: none
+}
+
+.Content .MapView {
+    display: none;
+    padding: 10px
+}
+
+.Content.ShowMap {
+    overflow: hidden
+}
+
+.Content.ShowMap .ListView {
+    display: none
+}
+
+.Content.ShowMap .MapView {
+    display: block
+}
+
+#Results_List {
+    padding: 0 10px
+}
+
+#Beacons_List {
+    padding: 0 10px
+}
+
+.ResultRow {
+    position: relative;
+    padding: 12px 5px 12px 72px;
+    border-bottom: 1px solid #DDD;
+    min-height: 64px;
+    cursor: pointer;
+    background: transparent url(../img/Icons/NextRoundGreen.png) no-repeat scroll right 8px
+}
+
+.ResultRow .Icon {
+    position: absolute;
+    width: 64px;
+    left: 0;
+    top: 14px
+}
+
+.ResultRow .Title {
+    font-size: 18px;
+    line-height: 20px;
+    padding-right: 26px
+}
+
+.ResultRow .Category {
+    color: #f57204;
+    font-size: 13px;
+    padding: 2px 0
+}
+
+.ResultRow .Address {
+    color: #888;
+    line-height: 16px
+}
+
+.ResultRow .Address table {
+    width: 100%
+}
+
+.ResultRow .Address .vicinity {
+    vertical-align: top
+}
+
+.ResultRow .Address .miles {
+    width: 90px;
+    vertical-align: top;
+    text-align: right
+}
+
+.ResultRow .Address .miles span {
+    display: inline-block;
+    padding-left: 15px;
+    background: transparent url(../img/Icons/MapLocation.png) no-repeat scroll left center
+}
+
+#HomeIcon {
+    position: absolute;
+    left: 90px;
+    top: 10px;
+    width: 64px;
+    height: 64px;
+    background: transparent url(../img/Icons/HomeIcon.png) no-repeat scroll center center;
+    z-index: 500;
+    cursor: pointer
+}
+
+.MapView {
+    position: relative
+}
+
+#RedoSearch {
+    position: absolute;
+    bottom: 30px;
+    left: 10px;
+    right: 10px;
+    padding: 8px 0;
+    text-align: center;
+    background-color: #999;
+    opacity: .95
+}
+
+.ShowMore {
+    text-align: center;
+    padding: 10px 0
+}
+
+.InfoWindow {
+    line-height: 1.35;
+    overflow: hidden;
+    white-space: nowrap
+}
+
+.InfoWindow h3 {
+    font-size: 18px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    color: #333
+}
+
+.InfoWindow .Cat {
+    color: #f57204;
+    font-size: 13px;
+    padding: 3px 0 2px 0
+}
+
+.InfoWindow .Cat table {
+    width: 100%
+}
+
+.InfoWindow .Cat .c1 {
+    vertical-align: top
+}
+
+.InfoWindow .Cat .c2 {
+    width: 90px;
+    vertical-align: top;
+    text-align: right;
+    color: #888
+}
+
+.InfoWindow .Cat .c2 span {
+    display: inline-block;
+    padding-left: 15px;
+    background: transparent url(../img/Icons/MapLocation.png) no-repeat scroll left center
+}
+
+.InfoWindow .Addr {
+    color: #888;
+    padding: 2px 0 4px 0
+}
+
+.InfoWindow .Action {
+    padding: 4px 0 0 0
+}
+
+.InfoWindow .Action a {
+    text-decoration: underline;
+    color: #444;
+    font-weight: bold
+}
+
+.SelectedPlace {
+    position: relative;
+    padding: 12px 12px 12px 120px;
+    border-bottom: 1px solid #b6b6b6;
+    min-height: 102px;
+    background-color: #ebebeb
+}
+
+.SelectedPlace .Icon {
+    position: absolute;
+    width: 100px;
+    left: 10px;
+    top: 14px
+}
+
+.SelectedPlace .Title {
+    font-size: 20px;
+    line-height: 22px
+}
+
+.SelectedPlace .Category {
+    color: #f57204;
+    font-size: 13px;
+    padding: 2px 0 4px 0
+}
+
+.SelectedPlace .Address {
+    color: #888;
+    line-height: 16px
+}
+
+.SelectedPlace .Address .vicinity {
+    padding: 0 0 6px 0
+}
+
+.SelectedPlace .Address .miles {
+    margin-left: -2px
+}
+
+.SelectedPlace .Address .miles span {
+    display: inline-block;
+    padding-left: 15px;
+    background: transparent url(../img/Icons/MapLocation.png) no-repeat scroll left center
+}
+
+.Page .BottomAction .PrevBtn {
+    color: #FFF;
+    padding: 0 4px 3px 28px;
+    background: transparent url(../img/Icons/LeftArw.png) no-repeat scroll 5px top;
+    float: left
+}
+
+.Page .BottomAction .NextBtn {
+    color: #FFF;
+    padding: 0 28px 3px 4px;
+    background: transparent url(../img/Icons/RightArw.png) no-repeat scroll 99% top;
+    float: right;
+    margin-right: 15px
+}
+
+.Page .BottomAction .SubmitBtn {
+    width: 52px !important
+}
+
+.ComplaintTypes {
+    padding: 10px 0
+}
+
+.ComplaintTypes .ComplaintType {
+    padding-bottom: 20px
+}
+
+.ComplaintTypes .ComplaintType h4 {
+    font-size: 17px;
+    font-weight: normal;
+    line-height: normal;
+    padding: 0;
+    margin: 0 0 10px 0
+}
+
+.ComplaintTypes .ComplaintType h4 span {
+    display: inline-block;
+    padding: 4px 8px 4px 8px;
+    color: #fff;
+    border: 0;
+    background-color: #e93f01;
+    background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#f57303), to(#e93f01));
+    background-image: -webkit-linear-gradient(top, #f57303, #e93f01);
+    background-image: -moz-linear-gradient(top, #f57303, #e93f01);
+    background-image: -ms-linear-gradient(top, #f57303, #e93f01);
+    background-image: -o-linear-gradient(top, #f57303, #e93f01);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)
+}
+
+.ComplaintTypes .ComplaintType .SubComplaintTypes {
+    padding: 0 25px
+}
+
+.ComplaintTypes .ComplaintType .SubComplaintTypes .ComplaintText {
+    padding: 12px 0 12px 36px;
+    font-size: 15px;
+    line-height: 1.1em;
+    border-bottom: 1px solid #DDD;
+    cursor: pointer;
+    background: transparent url(../img/Icons/Checkbox_Off.png) no-repeat scroll left 8px
+}
+
+.ComplaintTypes .ComplaintType .SubComplaintTypes .ComplaintText.CSel {
+    background-image: url(../img/Icons/Checkbox_On.png)
+}
+
+.EmailOpt, .SelectedComplaints {
+    padding: 20px
+}
+
+.AdditionalFeedback {
+    padding: 20px 20px 0 20px
+}
+
+.EmailOpt h3, .SelectedComplaints h3, .AdditionalFeedback h3 {
+    font-weight: normal;
+    line-height: 1em;
+    margin: 0 0 8px 0
+}
+
+.EmailOpt p, .SelectedComplaints p, .AdditionalFeedback p {
+    margin: 0 0 8px 0
+}
+
+.AddlFeedbackText {
+    padding-bottom: 10px
+}
+
+#dlgAdditionalFeedback, #dlgWarnEmail {
+    min-width: 200px;
+    display: none;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 30px;
+    margin-top: 20px;
+    background-color: #FFF;
+    border: solid 1px #999;
+    box-shadow: 1px 1px 3px #666;
+    z-index: 100
+}
+
+#dlgAdditionalFeedback .TitleBar, #dlgWarnEmail .TitleBar {
+    background-color: #1C84C7;
+    height: 36px;
+    text-align: center;
+    padding: 3px;
+    font-size: 24px;
+    color: #FFF
+}
+
+#dlgWarnEmail .TitleBar {
+    background-color: #ae240e;
+    font-size: 26px;
+    font-weight: bold
+}
+
+#dlgAdditionalFeedback .Body, #dlgWarnEmail .Body {
+    padding: 15px
+}
+
+#dlgAdditionalFeedback .ButtonsRow, #dlgWarnEmail .ButtonsRow {
+    text-align: center
+}
+
+#dlgAdditionalFeedback textarea {
+    width: 98%
+}
+
+#dlgWarnEmail {
+    box-shadow: 5px 5px 30px #666
+}
+
+.SelectedComplaints table {
+    max-width: 100%;
+    font-size: 13px
+}
+
+.SelectedComplaints table td {
+    vertical-align: top;
+    padding: 0 5px 8px 5px
+}
+
+.SelectedComplaints table td.C1 {
+    text-align: right
+}
+
+.SelectedComplaints table td.C2 {
+    padding-top: 1px
+}
+
+.SelectedComplaints table td.C1 span {
+    display: inline-block;
+    padding: 3px 8px 3px 8px;
+    color: #fff;
+    border: 0;
+    background-color: #e93f01;
+    background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#f57303), to(#e93f01));
+    background-image: -webkit-linear-gradient(top, #f57303, #e93f01);
+    background-image: -moz-linear-gradient(top, #f57303, #e93f01);
+    background-image: -ms-linear-gradient(top, #f57303, #e93f01);
+    background-image: -o-linear-gradient(top, #f57303, #e93f01);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    max-width: 240px;
+    min-width: 40px
+}
+
+.EmailOpt {
+    border-bottom: 1px solid #DDD
+}
+
+.EmailOpt #txtEmailAddress {
+    width: 98%
+}
+
+.SentPage h2 {
+    font-weight: normal;
+    font-size: 42px
+}
+
+.SentPage .Type1 p, .SentPage .Type2 p {
+    color: #666;
+    font-size: 16px
+}
+
+.SentPage .SocialConnect {
+    margin-top: 1em
+}
+
+.SentPage .SocialConnect form {
+    display: inline-block
+}
+
+.SentPage .SocialConnect .GrayBtn {
+    height: 28px;
+    padding: 0 8px;
+    margin-right: 2px
+}
+
+.SentPage .SocialConnect a.GrayBtn {
+    display: inline-block;
+    padding: 3px 8px 0 8px;
+    height: 24px
+}
+
+a.GreenBtn {
+    padding: 5px 8px 0 8px;
+    height: 36px;
+    display: inline-block
+}
+
+
+#dlgWarnEmailSubmit {
+    margin: 2px 40px 0 0
+}
+
+.PoweredGoogle {
+    text-align: center;
+    padding: 10px 0 30px 0
+}
+

@@ -1,0 +1,119 @@
+﻿.ResultList {
+}
+
+.ResultList .ResultRow {
+    position: relative;
+    padding: 12px 14px 12px 12px;
+    border-bottom: 1px solid #EEE; /*background: transparent url(../img/Icons/NextRound.png) no-repeat scroll 99% 54px;*/
+    cursor: pointer;
+}
+
+.ResultList .ResultRow .CompanyName, .ResultList .ResultRow .FromName {
+    font-size: 20px;
+    line-height: 20px;
+    color: #222;
+    padding: 0 84px 9px 0;
+}
+
+.ResultList .ResultRow .Date {
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    color: #1c7ebd;
+    font-weight: bold;
+    text-align: right;
+}
+
+.ResultList .ResultRow .Icon {
+    position: absolute;
+    right: 14px;
+    top: 54px;
+    width: 24px;
+    height: 24px;
+}
+
+.ResultList .ResultRow .Date span {
+    display: block;
+}
+
+.ResultList .ResultRow .Subject {
+    color: #6aa500;
+    font-weight: bold;
+    padding: 0 64px 0 0;
+    height: 1.2em;
+    line-height: 1.2em;
+    overflow: hidden;
+}
+
+.ResultList .ResultRow .ContentText {
+    color: #888;
+    padding: 0 64px 0 0;
+}
+
+.MessageView .FromName, .MessageView .ToName {
+    font-size: 20px;
+    line-height: 20px;
+    color: #222;
+    padding: 9px 12px;
+    border-bottom: 1px solid #EEE;
+}
+
+.MessageView .Subject, .MessageView .Date {
+    font-weight: bold;
+    padding: 9px 12px;
+    color: #666;
+}
+
+.MessageView .Date {
+    padding: 0 12px 9px 12px;
+    color: #1c7ebd;
+    border-bottom: 1px solid #EEE;
+}
+
+.MessageView .ContentText {
+    padding: 9px 12px 9px 12px;
+    color: #888;
+    border-bottom: 1px solid #EEE;
+    white-space: pre-wrap;
+}
+
+.MessageView .Attachments {
+    padding: 16px 12px 0 12px;
+}
+
+.MessageView .Attachment {
+    padding: 0 0 16px 72px;
+    background: transparent url(../img/Icons/Download.png) no-repeat scroll 0 0;
+    line-height: 1.1em;
+}
+
+.MessageView .Attachment a {
+    display: block;
+    font-size: 16px;
+    text-decoration: underline;
+    padding-bottom: 5px;
+}
+
+.MessageView .Attachment .FileName {
+    color: #444;
+    font-size: 13px;
+    padding-bottom: 1px;
+}
+
+.MessageView .Attachment .FileSize {
+    color: #888;
+    font-size: 11px;
+}
+
+span.AttachPin {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: transparent url(../img/Icons/AttachPin.png) no-repeat scroll 0 0;
+}
+
+.Page .BottomAction .DeleteBtn {
+    display: block;
+    color: #FFF;
+    line-height: 1;
+}

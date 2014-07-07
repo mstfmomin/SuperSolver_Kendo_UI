@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon" href="img/AppleIcon.png"/>
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>SuperSolver</title>
+    
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova_plugins.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/supersolver.js"></script>
+    
+    <link href="css/App.css" rel="stylesheet" type="text/css" />
+    <link href="css/Customer.css" rel="stylesheet" type="text/css" />
+
+    <script src="js/Core/Core.All.js" type="text/javascript"></script>    
+    <script src="js/App.js" type="text/javascript"></script>
+    <script src="js/Customer.js" type="text/javascript"></script>
+    <script src="js/twitter.js" type="text/javascript"></script>
+    <script src="js/jsOAuth.js" type="text/javascript"></script>
+    <script src="js/fbauth.js" type="text/javascript"></script>
+    <script src="cdv-plugin-fb-connect.js"></script>
+    <script src="facebook-js-sdk.js"></script>
+
+    <script type="text/javascript">
+        if (window.addEventListener) {
+            window.addEventListener("load", function () {
+                // Set a timeout...
+                setTimeout(function () {
+                    // Hide the address bar!
+                    window.scrollTo(0, 1);
+                }, 0);
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+       $(document).ready(function () {
+       document.addEventListener("deviceready", DeviceReady, false);
+
+        function DeviceReady()
+        {
+            console.log("Entering app.html DeviceReady");
+            SuperSolver.Login.Init();
+            FB.init({ appId: SuperSolver.FB_ID, nativeInterface: CDV.FB, useCachedDialogs: false });
+            //FB.getLoginStatus(handleStatusChange); //don't think I need
+            authUser(); //Facebook check
+        }
+
+        document.getElementById("MenuName").innerHTML=localStorage.CustomerName;
+
+
+        $('#connectGG').on('click', function() {
+            glogin.getCredentials();
+        });
+
+        $('#connectTW').on('click', function() {
+            Twitter.init();
+        });
+
+        $('#connectFB').on('click', function() {
+            promptLogin();
+        });
+
+
+        if (window.self === window.top) {
+        } else {
+            $($('form', '.SocialConnect')[1]).attr('target', '_top');
+            $($('form', '.SocialConnect')[2]).attr('target', '_top');
+        }
+
+        if (localStorage.CustomerID > 0){
+            document.getElementById("menuNotLoggedIn").style.display = "none";
+            document.getElementById("menuLoggedIn").style.display = "block";
+
+        }
+        else
+        {
+            document.getElementById("menuNotLoggedIn").style.display = "block";
+            document.getElementById("menuLoggedIn").style.display = "none";
+
+        }
+
+            SuperSolver.Registration.Init();
+                          
+            if (window.self === window.top) {
+            } else {
+                $($('form', '.SocialConnect')[1]).attr('target', '_top');
+                $($('form', '.SocialConnect')[2]).attr('target', '_top');
+            }
+          var frm = $('#RegistrationForm');
+          
+          frm.submit(function(event){
+                     $.ajax({
+                            type: frm.attr('method'),
+                            url: SuperSolver.theURL + "Register2",
+                            data: frm.serialize(),
+                            //dataType: "jsonp",
+                            crossDomain: true,
+                            success: function(data){
+                            if (data.Success == true){
+                            localStorage.CustomerFirstName = document.getElementById("FirstName").value;
+                            localStorage.CustomerLastName = document.getElementById("LastName").value;
+                            localStorage.CustomerName = localStorage.CustomerFirstName + " " + localStorage.CustomerLastName;
+                            localStorage.CustomerEmail = document.getElementById("Email").value;
+                            localStorage.CustomerPassword = document.getElementById("Password").value;
+                            localStorage.CustomerID = data.CustomerID;
+                            localStorage.AuthTokenName = data.AuthTokenName;
+                            localStorage.AuthTokenValue = data.AuthTokenValue;
+                            localStorage.AuthTokenExpires = data.AuthTokenExpires;
+                            navigator.notification.alert("Registration successful!",null,"SuperSolver");
+                            window.location.href="app.html";
+                            }
+                            else
+                            {
+                            navigator.notification.alert(data.ErrorText,null,"SuperSolver");
+                            }
+                            }
+                            });
+                     event.preventDefault();
+                     });
+                          
+        });
+    </script>
+    
+</head>
+<body>
+    <div class="Container">
+<div class="MenuView">
+    <div class="MenuViewInner">
+        <div>
+            <div class="UserInfo">
+                <a href="javascript:;" class="MenuToggle">
+                    <img alt="" src="img/Icons/LeftRound.png" /></a> <span id="MenuName"></span></div>
+            <ul class="MenuNav">
+                <li><a href="app.html">Start</a></li>
+                <li><a href="messages.html">Messages</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="invitebusiness.html">Invite a Biz</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="MenuNav" id="menuNotLoggedIn" style="display:block">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+            <ul class="MenuNav" id="menuLoggedIn" style="display:none">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="MenuNav">
+                <li><a href="legal.html">Legal</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+        <div class="MainView">
+            <div class="Page" data-page="Registration">
+    <div class="Header">
+        <h1>Join SuperSolver</h1>
+        <div class="LeftBarRegion">
+            <button type="button" class="BarBtn MenuToggle"><span>&nbsp;</span></button>
+        </div>
+    </div>
+    <div class="Content">
+        <div class="Registration">
+            <h2>Join <span class="Dull">SuperSolver</span></h2>
+            <p class="Info">
+                Register with SuperSolver and gain access to Make Good Offers from businesses.
+            </p>
+            <div class="RegistrationForm">
+                <form method="post" action="" id="RegistrationForm">
+                    <div class="FormRow">
+                        <label class="Label">First Name<span class="Astrix">*</span></label>
+                        <div class="FormElement">
+                            <input id="FirstName" maxlength="50" name="FirstName" type="text" value="" />
+                            
+                        </div>
+                    </div>
+                    <div class="FormRow">
+                        <label class="Label">Last Name</label>
+                        <div class="FormElement">
+                            <input id="LastName" maxlength="50" name="LastName" type="text" value="" />
+                            
+                        </div>
+                    </div>
+                    <div class="FormRow">
+                        <label class="Label">E-Mail Address<span class="Astrix">*</span></label>
+                        <div class="FormElement">
+                            <input id="Email" maxlength="255" name="Email" type="email" value="" />
+                            
+                        </div>
+                    </div>
+                    <div class="FormRow">
+                        <label class="Label">Password<span class="Astrix">*</span></label>
+                        <div class="FormElement">
+                            <input id="Password" maxlength="50" name="Password" type="password" />
+                            
+                        </div>
+                    </div>
+                    <div class="FormRow">
+                        <label class="Label">Confirm Password<span class="Astrix">*</span></label>
+                        <div class="FormElement">
+                            <input id="ConfirmPassword" maxlength="50" name="ConfirmPassword" type="password" />
+                            
+                        </div>
+                    </div>
+                    <div class="FormRow">
+                        <div class="FormElement">
+                            <button type="submit" class="Btn GreenBtn">Register</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+            <p>
+                OR Use your Facebook, Google or Twitter account to join SuperSolver.
+            </p>
+            <div class="SocialConnect">
+                <span>
+                    <input type="hidden" name="IsLogin" value="True" />
+                    <button class="GrayBtn" id="connectFB">
+                        <img alt="" src="img/Icons/FB_16.png" />
+                        Facebook</button>
+                </span>
+                <span>
+                    <input type="hidden" name="IsLogin" value="True" />
+                    <button class="GrayBtn" id="connectGG">
+                        <img alt="" src="img/Icons/GA_16.png" />
+                        Google</button>
+                </span>
+                <span>
+                    <input type="hidden" name="IsLogin" value="True" />
+                    <button class="GrayBtn" id="connectTW">
+                        <img alt="" src="img/Icons/TW_16.png" />
+                        Twitter</button>
+                </span>
+            </div>
+            <p>
+                Already a member? Tap <a href="login.html">here</a> to login to SuperSolver.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+        </div>
+    </div>
+    <div class="LoadingWrapper" style="display:none;">
+        <div class="Overlay"></div>
+        <div class="Msg"></div>
+    </div>
+    <div id="DlgOverlay" style="display:none;"></div>
+</body>
+</html>
