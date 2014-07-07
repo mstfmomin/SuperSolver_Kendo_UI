@@ -46,38 +46,65 @@
                               });
             </script>
         
-</head>
-<body>
-    <div class="Container">
-<div class="MenuView">
-    <div class="MenuViewInner">
-        <div>
-            <div class="UserInfo">
-                <a href="javascript:;" class="MenuToggle">
-                    <img alt="" src="img/Icons/LeftRound.png" /></a> <span id="MenuName"></span></div>
-            <ul class="MenuNav">
-                <li><a href="app.html">Start</a></li>
-                <li><a href="messages.html">Messages</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="invitebusiness.html">Invite a Biz</a></li>
-            </ul>
+ <!-- Kendo UI Mobile CSS -->
+        <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+
+        <!-- jQuery JavaScript -->
+        <script src="kendo/js/jquery.min.js"></script>
+        <!-- Kendo UI Mobile combined JavaScript -->
+        <script src="kendo/js/kendo.mobile.min.js"></script>
+
+
+	</head>
+
+	<body>
+    <script>
+    // Initialize a new Kendo Mobile Application
+        var app = new kendo.mobile.Application($(document.body), { skin: 'flat' });
+        new kendo.mobile.Application($(document.body), { platform: "ios7"});
+    </script>
+		<div id="Drawer1" data-role="drawer" data-layout="main-layout">
+			<div class="MenuView" id="MenuView">
+				<div class="MenuViewInner">
+					<div>
+						<div class="UserInfo">
+						<a href="javascript:;" class="MenuToggle">
+						<img alt="" src="img/Icons/LeftRound.png" /></a> <span id="MenuName"></span></div>
+						<ul class="MenuNav">
+						<li><a href="app.html">Start</a></li>
+						<li><a href="messages.html">Messages</a></li>
+						<li><a href="profile.html">Profile</a></li>
+						<li><a href="invitebusiness.html">Invite a Biz</a></li>
+						</ul>
+					</div>
+					<div>
+						<ul class="MenuNav" id="menuNotLoggedIn" style="display:none">
+						<li><a href="login.html">Login</a></li>
+						<li><a href="register.html">Register</a></li>
+						</ul>
+						<ul class="MenuNav" id="menuLoggedIn" style="display:none">
+						<li><a href="logout.html">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+    	</div> 		
+       <!--Main layout of the pages including header and footer-->
+        <div data-role="layout" data-id="main-layout">
+          <div data-role="header">
+            <div data-role="navbar">
+              <span data-role="view-title"></span>
+            </div>
+          </div>
+            
+          <div data-role="footer">
+            <div data-role="tabstrip">
+              <a data-icon="action" href="#app">Login</a>
+              <a data-icon="share" href="#login">Invite Biz</a>
+            </div>
+          </div>
         </div>
-        <div>
-            <ul class="MenuNav" id="menuNotLoggedIn" style="display:none">
-                <li><a href="login.html">Login</a></li>
-                <li><a href="register.html">Register</a></li>
-            </ul>
-            <ul class="MenuNav" id="menuLoggedIn" style="display:none">
-                <li><a href="logout.html">Logout</a></li>
-            </ul>
-        </div>
-        <div>
-            <ul class="MenuNav">
-                <li><a href="legal.html">Legal</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+  <div class="Container" data-role="view" data-layout="main-layout" id="eula" data-title="SuperSolver">      
         <div class="MainView">
             <div class="Page" data-page="EULA">
     <div class="Header">
